@@ -70,7 +70,7 @@ export default function SignIn({setName}) {
               onChange={(e)=>setString(e.target.value)}
             />
             <Button
-              type="submit"
+              type="button"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
