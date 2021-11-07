@@ -37,7 +37,7 @@ export default function SignIn({setName}) {
   // eslint-disable-next-line
   const [disabled,setDisabled] = useState(true);
   const [string,setString]=useState('');
-  console.log(string);
+  const [isComposed,setIsComposed]=useState(false);
 
   useEffect(()=>{
     const disabled = string==='';
@@ -69,11 +69,16 @@ export default function SignIn({setName}) {
               autoFocus
               onChange={(e)=>setString(e.target.value)}
               onKeyDown={(e)=>{
+                if(isComposed) return;
                 if(e.key==='Enter'){
                   e.preventDefault();
                   setName(e.target.value);
                 }
               }}
+
+              onCompositionStart={()=>setIsComposed(true)}
+              onCompositionEnd={()=>setIsComposed(false)}
+
             />
             <Button
               type="button"
@@ -81,7 +86,7 @@ export default function SignIn({setName}) {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               disabled={disabled}
-              onClick={setName(string)}
+              onClick={()=>{setName(string)}}
             >
               はじめる
             </Button>
