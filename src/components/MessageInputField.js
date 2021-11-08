@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import MessageField from './MessageField';
+import MessageSubmitButton from './MessageSubmitButton';
 import { Avatar, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -24,7 +25,9 @@ const MessageInputField =({name})=>{
                 <Grid item xs={10}>
                     <MessageField name={name} setText={setText} text={text}/>
                 </Grid>
-                <Grid item xs={1}>button</Grid>
+                <Grid item xs={1}>
+                    <MessageSubmitButton name={name} setText={setText} text={text}/>
+                </Grid>
             </Grid>
         </div>
     )
